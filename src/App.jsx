@@ -1,16 +1,14 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <>
       {/* Navigation Links */}
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <Header />
 
       {/* Routes */}
       <Routes>
