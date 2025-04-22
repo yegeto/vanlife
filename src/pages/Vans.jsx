@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Vans.css";
+import { Link } from "react-router-dom";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
@@ -11,17 +11,23 @@ export default function Vans() {
   }, []);
 
   const vanElements = vans.map(({ id, imageUrl, name, price, type }) => (
-    <Link to={`/vans/${id}`} key={id} className="van-tile">
-      <img src={imageUrl} alt={`${name} Image`} loading="lazy" />
-      <div className="van-info">
-        <h3>{name}</h3>
-        <p>
-          ${price}
-          <span>/day</span>
-        </p>
-      </div>
-      <i className={`van-type ${type} selected`}>{type}</i>
-    </Link>
+    <div key={id} className="van-tile">
+      <Link
+        to={`/vans/${id}`}
+        aria-label={`View details for ${name}, priced at $${price} per day`}
+        title={`Click to view details for ${name}`}
+      >
+        <img src={imageUrl} alt={`${name} Image`} loading="lazy" />
+        <div className="van-info">
+          <h3>{name}</h3>
+          <p>
+            ${price}
+            <span>/day</span>
+          </p>
+        </div>
+        <i className={`van-type ${type} selected`}>{type}</i>
+      </Link>
+    </div>
   ));
 
   return (
