@@ -1,1 +1,1 @@
-https://app.netlify.com/teams/egemenyucesan/sites
+https://vanlife-egeto.netlify.app/
