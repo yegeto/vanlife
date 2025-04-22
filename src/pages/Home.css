@@ -20,19 +20,11 @@
 }
 
 .home-container a {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
   background-color: #FF8C38;
-  border: none;
   width: 100%;
   margin-top: 27px;
   padding-block: .75rem;
   color: white;
-  font-weight: 700;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform .1s ease-in-out;
 }
 
 .home-container a:hover {
