@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./Vans.css";
-import { Link, NavLink, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +25,7 @@ export default function Vans() {
       <div key={id} className="van-tile">
         <Link
           to={id}
-          state={{ search: `?${searchParams.toString()}` }}
+          state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
           aria-label={`View details for ${name}, priced at $${price} per day`}
           title={`Click to view details for ${name}`}
         >
