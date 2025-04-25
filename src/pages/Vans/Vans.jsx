@@ -1,3 +1,5 @@
+// Vans.jsx
+
 import { useState, useEffect } from "react";
 import "./Vans.css";
 import { Link, NavLink, useSearchParams } from "react-router-dom";
@@ -23,6 +25,7 @@ export default function Vans() {
       <div key={id} className="van-tile">
         <Link
           to={id}
+          state={{ search: `?${searchParams.toString()}` }}
           aria-label={`View details for ${name}, priced at $${price} per day`}
           title={`Click to view details for ${name}`}
         >
