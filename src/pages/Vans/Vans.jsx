@@ -9,15 +9,21 @@ export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const typeFilter = searchParams.get("type");
 
   useEffect(() => {
     async function loadVans() {
       setLoading(true);
-      const data = await getVans();
-      setVans(data);
-      setLoading(false);
+      try {
+        const data = await getVans();
+        setVans(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
     }
 
     loadVans();
@@ -27,31 +33,35 @@ export default function Vans() {
     ? vans.filter((van) => van.type === typeFilter)
     : vans;
 
-  const vanElements = displayedVans.map(
-    ({ id, imageUrl, name, price, type }) => (
-      <div key={id} className="van-tile">
-        <Link
-          to={id}
-          state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
-          aria-label={`View details for ${name}, priced at $${price} per day`}
-          title={`Click to view details for ${name}`}
-        >
-          <img src={imageUrl} alt={`${name} Image`} loading="lazy" />
-          <div className="van-info">
-            <h3>{name}</h3>
-            <p>
-              ${price}
-              <span>/day</span>
-            </p>
-          </div>
-          <i className={`van-type ${type} selected`}>{type}</i>
-        </Link>
-      </div>
-    )
-  );
+  const vanElements = Array.isArray(displayedVans)
+    ? displayedVans.map(({ id, imageUrl, name, price, type }) => (
+        <div key={id} className="van-tile">
+          <Link
+            to={id}
+            state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
+            aria-label={`View details for ${name}, priced at $${price} per day`}
+            title={`Click to view details for ${name}`}
+          >
+            <img src={imageUrl} alt={`${name} Image`} loading="lazy" />
+            <div className="van-info">
+              <h3>{name}</h3>
+              <p>
+                ${price}
+                <span>/day</span>
+              </p>
+            </div>
+            <i className={`van-type ${type} selected`}>{type}</i>
+          </Link>
+        </div>
+      ))
+    : null;
 
   if (loading) {
     return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
   }
 
   return (
