@@ -1,11 +1,11 @@
-import { createServer, Model } from "miragejs";
+// server.js
+import { createServer, Model, Response } from "miragejs";
 
-export function makeServer() {
-  return createServer({
+if (process.env.NODE_ENV === "development") {
+  createServer({
     models: {
       vans: Model,
     },
-
     seeds(server) {
       server.create("van", {
         id: "1",
@@ -74,13 +74,11 @@ export function makeServer() {
         hostId: "123",
       });
     },
-
     routes() {
       this.namespace = "api";
       this.logging = false;
 
       this.get("/vans", (schema, request) => {
-        // return new Response(400, {}, { error: "Error fetching data" });
         return schema.vans.all();
       });
 
@@ -90,12 +88,10 @@ export function makeServer() {
       });
 
       this.get("/host/vans", (schema, request) => {
-        // Hard-code the hostId for now
         return schema.vans.where({ hostId: "123" });
       });
 
       this.get("/host/vans/:id", (schema, request) => {
-        // Hard-code the hostId for now
         const id = request.params.id;
         return schema.vans.findBy({ id, hostId: "123" });
       });
