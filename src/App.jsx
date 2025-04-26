@@ -52,7 +52,11 @@ const router = createBrowserRouter(
           element={<Income />}
           loader={async () => await requireAuth()}
         />
-        <Route path="reviews" element={<Reviews />} />
+        <Route
+          path="reviews"
+          element={<Reviews />}
+          loader={async () => await requireAuth()}
+        />
         <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
         <Route
           path="vans/:id"
