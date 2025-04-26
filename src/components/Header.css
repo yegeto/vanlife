@@ -32,3 +32,18 @@ header a:hover {
   color: #161616;
   text-decoration: underline;
 }
+
+header nav.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+header .login-icon {
+  height: 18px;
+  width: 18px;
+}
+
+header .login-link {
+  display: inline-flex;
+  align-items: center;
+}
