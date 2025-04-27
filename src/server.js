@@ -77,9 +77,9 @@ if (process.env.NODE_ENV === "development") {
       });
       server.create("user", {
         id: "123",
-        email: "b@b.com",
-        password: "p123",
-        name: "Bob",
+        email: "user@ege.to",
+        password: "1234",
+        name: "Egeto",
       });
     },
 
