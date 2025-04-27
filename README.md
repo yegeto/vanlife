@@ -1,6 +1,6 @@
 # 🚐 VanLife App
 
-A multi-page React web app simulating a platform for renting vans. This project was built to practice React Router concepts, handling protected routes, authentication, and dynamic search functionality.
+A single-page React web app simulating a platform for renting vans. This project was built to practice React Router concepts, handling protected routes, authentication, and dynamic search functionality.
 
 The app is designed as a learning project following the Scrimba Frontend Career Path curriculum.
 
