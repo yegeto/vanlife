@@ -54,6 +54,8 @@ export default function Login() {
           {isSubmitting ? "Logging in..." : "Log In"}
         </button>
       </Form>
+      <pre>Email: user@ege.to</pre>
+      <pre>Password: p123</pre>
     </div>
   );
 }
